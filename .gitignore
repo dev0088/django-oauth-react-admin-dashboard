@@ -70,7 +70,7 @@ docs/_build/
 # PyBuilder
 target/
 
-static
+# static
 calendar.dat
 
 ######################################
