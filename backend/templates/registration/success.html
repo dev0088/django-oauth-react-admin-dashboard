@@ -1,0 +1,42 @@
+{% extends "registration/base.html" %}
+{% load static %}
+
+{% block body %}
+<body class="hold-transition login-page">
+    <div class="container">
+        <div class="content" id="grp-content-container" style="padding-top: 50px">
+            <div class="row">
+                <div class="col-8">
+                    <h1 class="mt-2">Register</h1>
+                    <hr class="mt-0 mb-4">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8">
+                    <p class="bg-success" style="padding:10px; color: #468847; font-size: 16px; font-family: sans-serif;">
+                        Your account and credentials was registered successfully!
+                        Please contact administrator to send google calendar events.
+                    </p>
+                </div>
+            </div>
+            <div style="height: 30px;"></div>
+            <div class="row">
+                <div class="col-sm-3">
+                    <a href="{% url "register" %}">>
+                        <button type="submit" class="btn btn-success">
+                            Register another account
+                        </button>
+                    </a>
+                </div>
+                <div class="col-sm-3">
+                    <a href="{% url "login" %}">>
+                        <button type="submit" class="btn btn-info">
+                            Go to home page
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock %}

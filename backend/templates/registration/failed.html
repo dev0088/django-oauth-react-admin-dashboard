@@ -1,0 +1,36 @@
+{% extends "project_base.html" %}
+{% block content %}
+  {% csrf_token %}
+  <div class="content" id="grp-content-container" style="padding-top: 50px">
+      <div class="row">
+          <div class="col-8">
+              <h1 class="mt-2">Register</h1>
+              <hr class="mt-0 mb-4">
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-8">
+              <p class="bg-danger" style="padding:10px; color: #d9534f; font-size: 16px; font-family: sans-serif;">
+                  {{ error_message }}
+              </p>
+          </div>
+      </div>
+      <div style="height: 30px;"></div>
+      <div class="row">
+          <div class="col-sm-3">
+              <a href="{% url "register" %}">
+                <button type="submit" class="btn btn-success">
+                  Try again
+                </button>
+              </a>
+          </div>
+          <div class="col-sm-3">
+              <a href="{% url "login" %}">
+                <button type="submit" class="btn btn-info">
+                    Go to home page
+                </button>
+              </a>
+          </div>
+      </div>
+  </div>
+{% endblock %}

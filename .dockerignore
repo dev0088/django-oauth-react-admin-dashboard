@@ -1,0 +1,17 @@
+env
+env3
+.tox
+*.pyc
+db.sqlite3
+.DS_Store
+media/
+static/
+# staticlist
+logs
+backend/.idea
+__pycache__
+docker-compose.yml
+Dockerfile
+db_data/
+frontend/node_modules/
+

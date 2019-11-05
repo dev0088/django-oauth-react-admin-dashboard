@@ -1,0 +1,61 @@
+{% load static %}
+
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Youta</title>
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+        <!-- <link rel="stylesheet" type="text/css" href="{% static "css/stylesheets.css" %}"> -->
+        <link href="{% static "css/stylesheets.css" %}" rel="stylesheet">
+        <link href="{% static "css/main.css" %}" rel="stylesheet"></head>
+        <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <noscript>This application requires javascript to function.</noscript>
+        <div id="root"></div>
+        <!-- <script src="{% static "js/vendor.bundle.js" %}"></script> -->
+        <script>
+        window.django = {
+            csrf: "{{ csrf_token }}",
+            urls: {
+                logout: "{% url "logout" %}",
+                staticRoot: "{% static "" %}",
+                users: "{% url "emailuser-list" %}",
+                events: "{% url "events-list" %}"
+            },
+            user: {
+                id: "{{ request.user.id }}",
+                username: "{{ request.user.username }}",
+                email: "{{ request.user.email }}",
+                full_name: "{{ request.user.get_full_name }}",
+                last_login: "{{ request.user.last_login }}",
+                first_name: "{{ request.user.first_name }}",
+                last_name: "{{ request.user.last_name }}",
+                is_active: "{{ request.user.is_active }}",
+                date_joined: "{{ request.user.date_joined }}",
+                last_updated: "{{ request.user.last_updated }}",
+                google_oauth2_client_id: "{{ request.user.google_oauth2_client_id }}",
+                google_oauth2_secrete: "{{ request.user.google_oauth2_secrete }}",
+                // permissions: immutable.Set(
+                //     {% autoescape off %}JSON.parse('{{ permissions }}'){% endautoescape %}
+                // )
+            },
+            oauth2token: {
+                access_token: "{{ request.user.user_oauth2token.access_token }}",
+                refresh_token: "{{ request.user.user_oauth2token.refresh_token }}",
+                token_expiry: "{{ request.user.user_oauth2token.token_expiry }}",
+                code: "{{ request.user.user_oauth2token.code }}",
+                text: "{{ request.user.user_oauth2token.text }}",
+            }
+        };
+        </script>
+
+        <script type="text/javascript" src="{% static "js/stylesheets.js" %}" async></script>
+        <script type="text/javascript" src="{% static "js/main.js" %}" async></script></body>
+    </body>
+</html>

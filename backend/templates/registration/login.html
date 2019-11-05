@@ -1,0 +1,29 @@
+{% extends "registration/base.html" %}
+{% load static %}
+
+{% block body %}
+<body class="hold-transition login-page">
+    {% csrf_token %}
+    <div style="color: #444; 
+    font-weight: 700;cursor: pointer; font-size: 35px;text-align: left; box-sizing: border-box; padding-left: 20px; padding-top: 10px" class="login-logo">
+        <a href="#"><b>Youta</b></a>
+    </div>
+    
+    <div class="login-box">
+        <div class="text-center">
+            <h3>Your Google Calendar analytics</h3>
+            <p>Understand and optimize your days</p> 
+        </div>
+        <div class="text-center">
+            <a href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}" style="text-transform:none">
+                <div class="btn white btn-default">
+                    <div class="left" style="display: inline">
+                        <img width="20px" alt="Google &quot;G&quot; Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png"/>
+                    </div>
+                    <div style="display: inline; padding-left: 10px">Login with Google</div>
+                </div>
+            </a>
+        </div>    
+    </div>
+</body>
+{% endblock body %}

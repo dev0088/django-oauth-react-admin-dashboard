@@ -1,0 +1,57 @@
+# docker-compose build
+# docker-compose up -d web
+
+version: '3.5'
+
+services:
+  db:
+    image: postgres:11
+    container_name: youta-db
+    volumes:
+      - ./db_data:/var/lib/postgresql/data
+    restart: on-failure:5
+    ports:
+      - "54320:5432"
+    environment:
+      POSTGRES_DB: youta
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    networks:
+      services-network:
+        aliases:
+          - db
+
+  web:
+    container_name: youta
+    depends_on:
+      - db
+    links:
+      - db:db
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      DATABASE_NAME: youta
+      DATABASE_USERNAME: postgres
+      DATABASE_PASSWORD: postgres
+      DATABASE_HOST: db
+      DATABASE_PORT: 5432
+      GOOGLE_CALENDAR_API_REDIRECT_URI: https://www.youtahq.com/register/access_token
+      REGISTER_URL: https://www.youtahq.com/register/access_token
+    volumes:
+      - '.:/usr/src/youta'
+    command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    ports:
+      - "80:8000"
+    networks:
+      services-network:
+        aliases:
+          - web
+
+volumes:
+  db_data:
+
+networks:
+  services-network:
+    name: services-network
+    driver: bridge
