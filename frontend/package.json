@@ -13,11 +13,6 @@
       "git add"
     ]
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "resolutions": {
     "babel-core": "7.0.0-bridge.0"
   },
