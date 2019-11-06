@@ -22,11 +22,18 @@ from rest_framework import authentication, permissions
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.permissions import AllowAny
+from drf_yasg.utils import swagger_auto_schema
 
 User = get_user_model()
 
 class UsersAPIView(APIView):
-    
+    """
+    Retrieve all users.
+    """
+    @swagger_auto_schema(
+      request_body=None,
+      responses={200: UserSerializer(many=True)}
+    )
     def get(self, request, format=None):
         users = User.objects.all()
         serializer = UserSerializer(users, many=True)
@@ -35,8 +42,12 @@ class UsersAPIView(APIView):
 
 class UserAPIView(APIView):
     """
-    Retrieve all users.
+    Retrieve a user.
     """
+    @swagger_auto_schema(
+      request_body=None,
+      responses={200: UserSerializer(many=False)}
+    )
     def get(self, request, format=None):
         content = {
             'user': str(request.user),
@@ -81,6 +92,10 @@ class UserOauth2TokenAPIView(APIView):
     # queryset = Oauth2Token.objects.all()
     # serializer_class = UserOauth2TokenSerializer
     # permission_classes = (IsAuthenticated,)
+    @swagger_auto_schema(
+      request_body=None,
+      responses={200: UserOauth2TokenSerializer(many=True)}
+    )
     def get(self, request, format=None):
         oauth2tokens = Oauth2Token.objects.all()
         serializer = UserOauth2TokenSerializer(oauth2tokens, many=True)
