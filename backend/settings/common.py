@@ -11,6 +11,7 @@ path.append(join(BASE_DIR, 'apps'))
 ALLOWED_HOSTS = [
     'youtahq.com',
     'www.youtahq.com',
+    'youtacalc.herokuapp.com',
     '0.0.0.0',
     '127.0.0.1',
     'localhost',
