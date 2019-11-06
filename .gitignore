@@ -114,11 +114,11 @@ flow-typed/npm/*
 
 # App packaged
 frontend/release
-frontend/dist
-frontend/build
+# frontend/dist
+# frontend/build
 frontend/.idea
 frontend/npm-debug.log.*
-frontend/public
+# frontend/public
 frontend/yarn.lock
 
 # Environment file
