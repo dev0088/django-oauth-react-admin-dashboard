@@ -138,9 +138,15 @@ SOCIAL_AUTH_PIPELINE = (
     'social_core.pipeline.user.user_details',
 )
 # SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '92421416771-a1gpokpb94qib680n4tffhlgpo98cobh.apps.googleusercontent.com'
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '92421416771-e0bf3801np8re8plmcpl39cedo4u0tq6.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.environ.get(
+    'SOCIAL_AUTH_GOOGLE_OAUTH2_KEY',
+    '92421416771-e0bf3801np8re8plmcpl39cedo4u0tq6.apps.googleusercontent.com'
+)
 # SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '33Hc93lm5tSoFHuaNte3XIcA'
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '7tMnytIug26OIjD8MaPBq-Po'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ.get(
+    'SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET',
+    '7tMnytIug26OIjD8MaPBq-Po'
+)
 SOCIAL_AUTH_ADMIN_USER_SEARCH_FIELDS = ['username', 'first_name', 'email']
 SOCIAL_AUTH_REDIRECT_IS_HTTPS = True
 
