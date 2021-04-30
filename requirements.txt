@@ -89,7 +89,7 @@ rauth==0.7.3
 regex==2019.8.19
 requests==2.22.0
 requests-oauthlib==1.2.0
-rsa==4.0
+rsa==4.7
 ruamel.yaml==0.16.5
 ruamel.yaml.clib==0.2.0
 simplejson==3.16.0
