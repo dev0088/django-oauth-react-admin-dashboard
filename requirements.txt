@@ -13,7 +13,7 @@ coverage==4.5.4
 cryptography==2.7
 defusedxml==0.6.0
 diff-match-patch==20181111
-Django==2.1.5
+Django==2.2.24
 django-allauth==0.25.2
 django-autofixture==0.12.1
 django-braces==1.9.0
